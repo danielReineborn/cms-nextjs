@@ -1,0 +1,32 @@
+.listitem {
+  display: flex;
+  height: 300px;
+  width: 600px;
+}
+
+.imgcontainer {
+  height: 100%;
+  width: 30%;
+}
+
+.infocontainer {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0.6rem;
+}
+
+.listimg {
+  height: 125px;
+  width: 125px;
+}
+
+.title {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.smallcontainer {
+  padding: 0.6rem;
+}

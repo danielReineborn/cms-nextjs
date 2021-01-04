@@ -1,0 +1,65 @@
+.view {
+  height: 270px;
+  width: 300px;
+  display: flex;
+  flex-flow: column nowrap;
+  border-radius: 4px;
+  align-self: center;
+  background-color: #ffffff;
+  padding: 0.5rem;
+}
+
+.form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem;
+  flex-flow: column nowrap;
+}
+
+.input {
+  width: 95%;
+  padding: 0.4rem;
+  outline-style: none;
+}
+
+.dropdown {
+  width: 92%;
+  padding: 0.4rem;
+  margin: 0.6rem;
+  outline-style: none;
+}
+
+.submit {
+  height: 40px;
+  width: 120px;
+  margin: 1.1rem;
+  outline: none;
+  border: none;
+  background-color: #4cce2c;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
+}
+.submit:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.55);
+}
+.submit:active {
+  opacity: 0.9;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.55);
+}
+
+.text {
+  font-size: 0.8rem;
+  margin: 0 0 0 0.6rem;
+  font-weight: 500;
+}

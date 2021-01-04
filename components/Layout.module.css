@@ -1,0 +1,39 @@
+.view {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.children {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: #ef404f;
+}
+
+.footer {
+  height: 125px;
+  border-top: 2px solid #d3d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footertext {
+  font-size: 0.8rem;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 0 2rem;
+}
