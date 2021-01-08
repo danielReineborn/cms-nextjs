@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import { getProductIds, getOneProduct } from "../../lib/productlist";
+import styles from "../../styles/ProductDetail.module.css";
+import { dateIsoToYearMonthDate } from "../../utils/index";
 
 export default function Product({ data }) {
   const { product } = data;
@@ -8,9 +10,45 @@ export default function Product({ data }) {
     <Layout>
       <Head>
         <title>{product.title}</title>{" "}
-        {/* add product name for this product. */}
       </Head>
-      <p>{product.description}</p>
+      <main className={styles.view}>
+        <div>
+          <h3 className={styles.title}>{product.title}</h3>
+          <p className={styles.text}>Kategori: {product.category.label}</p>
+        </div>
+        <div>
+          <p className={styles.text}>
+            Pris: {product.price}
+            {product.currency}
+          </p>
+        </div>
+        <div className={styles.container}>
+          <div className={styles.divider}>
+            <img
+              src={
+                product.image.length > 0
+                  ? product.image[0].url
+                  : "/images/default.jpg"
+              }
+              alt="Produktbild"
+            />
+          </div>
+          <div className={styles.divider}>
+            <div className={styles.smallcontainer}>
+              <p className={styles.smalltext}>Säljare: {product.email}</p>
+              <p className={styles.smalltext}>Ort: {product.location}</p>
+            </div>
+            <div className={styles.flex}>
+              <p className={styles.text}>{product.description}</p>
+            </div>
+            <div>
+              <p className={styles.smalltext}>
+                {dateIsoToYearMonthDate(product.createdAt)}
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
     </Layout>
   );
 }
@@ -24,7 +62,6 @@ export async function getStaticPaths() {
       },
     };
   });
-  console.log("prod: ", products, "paths: ", paths);
   return {
     paths,
     fallback: false,

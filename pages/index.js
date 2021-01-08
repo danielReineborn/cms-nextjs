@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
 import TextBloc from "../components/home/TextBloc";
@@ -7,11 +6,11 @@ import ProductSearch from "../components/home/ProductSearch";
 import ListItem from "../components/products/ListItem";
 import { getCategories } from "../lib/categories";
 import { getLandingPage } from "../lib/productlist";
+import AddProduct from "../components/home/AddProduct";
 
 export default function Home({ cat, lp }) {
   const { categories } = cat;
   const landingpage = lp.landingpages[0];
-  console.log(landingpage);
 
   return (
     <Layout>
@@ -22,6 +21,7 @@ export default function Home({ cat, lp }) {
       <section className={styles.imageheader}>
         <div className={styles.largecontainer}>
           <ProductSearch categories={categories} />
+          <AddProduct />
         </div>
       </section>
       <div className={styles.container}>

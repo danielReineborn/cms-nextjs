@@ -28,15 +28,16 @@ export default function NewProduct({}) {
       if (image) {
         const formData = new FormData();
         formData.append("fileUpload", image);
-        const res = await axios.post(process.env.URL_UPLOAD, formData);
+        const res = await axios.post(
+          "https://api-eu-central-1.graphcms.com/v2/ckiyivyj84feq01xuf51he3ld/master/upload",
+          formData
+        );
         product.imageId = res.data.id;
         const imageRes = await publishOne("Asset", product.imageId);
-        console.log(imageRes);
       }
       const { data } = await createProduct(product);
       const id = data.createProduct.id;
       const publish = await publishOne("Product", id);
-      console.log(data, publish);
     } catch (err) {
       console.error({ error: err });
     }

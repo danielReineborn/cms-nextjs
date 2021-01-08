@@ -3,6 +3,10 @@
   height: 150px;
   width: 100%;
   border: 1px solid #d3d3d3;
+  margin: 0.2rem 0 0.2rem 0;
+}
+.listitem:nth-child(odd) {
+  border: none;
 }
 
 .imgcontainer {

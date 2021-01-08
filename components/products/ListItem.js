@@ -3,12 +3,18 @@ import styles from "./ListItem.module.css";
 import { shortText, dateIsoToYearMonthDate } from "../../utils/index";
 
 export default function ListItem({ product }) {
+  console.log("listan: ", product);
   return (
     <section className={styles.listitem}>
+      <title></title>
       <div className={styles.imgcontainer}>
         <img
           className={styles.listimg}
-          src={product.image[0].url}
+          src={
+            product.image.length > 0
+              ? product.image[0].url
+              : "/images/default.jpg"
+          }
           alt={`Nice product`}
         />
       </div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 export default function ProductSearch({ categories }) {
   const [search, setSearch] = useState({ category: "", product: "" });
-
+  const router = useRouter();
   const handleChange = (e) => {
     setSearch((search) => ({
       ...search,
@@ -15,7 +15,9 @@ export default function ProductSearch({ categories }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search);
+    router.push(
+      `/products?category=${search.category}&title=${search.product}`
+    );
   };
   return (
     <div className={styles.view}>
