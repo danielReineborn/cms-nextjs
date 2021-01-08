@@ -1,32 +1,46 @@
 .listitem {
   display: flex;
-  height: 300px;
-  width: 600px;
+  height: 150px;
+  width: 100%;
+  border: 1px solid #d3d3d3;
 }
 
 .imgcontainer {
   height: 100%;
-  width: 30%;
+  width: 25%;
+  text-align: center;
 }
 
 .infocontainer {
   height: 100%;
-  width: 70%;
+  width: 75%;
   display: flex;
   flex-flow: column nowrap;
   padding: 0.6rem;
+  justify-content: space-between;
 }
 
 .listimg {
-  height: 125px;
-  width: 125px;
+  height: 100%;
+  max-width: 100%;
 }
 
 .title {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  padding: 0 0 0.4rem 0;
+}
+
+.text {
+  font-size: 0.8rem;
+  white-space: pre-wrap;
 }
 
 .smallcontainer {
-  padding: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.divider {
+  flex: 1;
 }

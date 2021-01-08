@@ -4,11 +4,15 @@ import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
 import TextBloc from "../components/home/TextBloc";
 import ProductSearch from "../components/home/ProductSearch";
+import ListItem from "../components/products/ListItem";
 import { getCategories } from "../lib/categories";
+import { getLandingPage } from "../lib/productlist";
 
-export default function Home({ data }) {
-  console.log(data.categories);
-  const { categories } = data;
+export default function Home({ cat, lp }) {
+  const { categories } = cat;
+  const landingpage = lp.landingpages[0];
+  console.log(landingpage);
+
   return (
     <Layout>
       <Head>
@@ -21,11 +25,9 @@ export default function Home({ data }) {
         </div>
       </section>
       <div className={styles.container}>
-        <TextBloc
-          p1={`Flocket är en marknadsplats för nya och använda prylar. Hitta presenten eller inredningsdetaljen redan idag.`}
-          title={`Marknadsplats`}
-        />
+        <TextBloc p1={landingpage.siteDescription} title={`Marknadsplats`} />
 
+        <ListItem product={landingpage.product} />
         <TextBloc
           p1={`Låt dina gamla saker bli nya för någon annan.`}
           p2={`Testar att ha två stycken.`}
@@ -38,9 +40,11 @@ export default function Home({ data }) {
 
 export async function getStaticProps() {
   const categories = await getCategories();
+  const landingPage = await getLandingPage();
   return {
     props: {
-      data: categories,
+      cat: categories,
+      lp: landingPage,
     },
   };
 }

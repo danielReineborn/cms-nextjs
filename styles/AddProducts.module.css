@@ -1,0 +1,27 @@
+.view {
+  display: flex;
+  width: 70%;
+  min-height: 100%;
+}
+
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.input {
+  width: 250px;
+  padding: 0.4rem;
+  margin: 0.2rem;
+  outline: none;
+}
+.textarea {
+  padding: 0.4rem;
+  margin: 0.2rem;
+  outline: none;
+}
+.text {
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  margin: 0.4rem;
+}
