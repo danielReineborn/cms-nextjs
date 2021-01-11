@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Layout from "../../../components/Layout";
 import styles from "../../../styles/AddProducts.module.css";
 import { createProduct, publishOne } from "../../../lib/productlist";
+import { getCategories } from "../../../lib/categories";
 import axios from "axios";
 
-export default function NewProduct({}) {
+export default function NewProduct({ cat }) {
+  const { categories } = cat;
   const [prodData, setProductData] = useState({
     title: "",
     description: "",
     price: "",
     location: "",
     email: "",
-    category: "ckjii0mps171q0a00g554vnm9",
-    ownerToken: "hemligKod",
+    category: "",
+    ownerToken: "",
     sold: false,
     currency: "SEK",
   });
   const [image, setImage] = useState(null);
+
+  /*   const router = useRouter();
+
+  useEffect(() => {}, [router.query]); */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +42,10 @@ export default function NewProduct({}) {
         product.imageId = res.data.id;
         const imageRes = await publishOne("Asset", product.imageId);
       }
+      console.log("efter bild");
       const { data } = await createProduct(product);
+      console.log("efter createProduct");
+
       const id = data.createProduct.id;
       const publish = await publishOne("Product", id);
     } catch (err) {
@@ -49,6 +59,7 @@ export default function NewProduct({}) {
       [e.target.name]:
         e.target.type === "number" ? parseInt(e.target.value) : e.target.value,
     }));
+    console.log(prodData);
   };
 
   const handleFile = (e) => {
@@ -107,13 +118,22 @@ export default function NewProduct({}) {
             <input className={styles.input} onChange={handleFile} type="file" />
           </label>
           <label className={styles.text}>
+            Välj en kategori för din produkt:
+            <br />
             <select
               value={prodData.category}
               name="category"
               className={styles.input}
               onChange={handleChange}
             >
-              <option value="">Här behövs alla kategorier</option>
+              <option value="">Välj en kategori</option>
+              {categories.map((cat) => {
+                return (
+                  <option value={cat.id} key={cat.id}>
+                    {cat.label}
+                  </option>
+                );
+              })}
             </select>
           </label>
           <label className={styles.text}>
@@ -138,9 +158,29 @@ export default function NewProduct({}) {
               onChange={handleChange}
             />
           </label>
-          <button type="submit">Lägg till product</button>
+          <label className={styles.text}>
+            Lösenord för att kunna ändra/ta bort din annons:
+            <br />
+            <input
+              value={prodData.ownerToken}
+              className={styles.input}
+              type="password"
+              name="ownerToken"
+              onChange={handleChange}
+            />
+          </label>
+          <button type="submit">Lägg till produkt</button>
         </form>
       </main>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const categories = await getCategories();
+  return {
+    props: {
+      cat: categories,
+    },
+  };
 }

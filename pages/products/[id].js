@@ -25,6 +25,7 @@ export default function Product({ data }) {
         <div className={styles.container}>
           <div className={styles.divider}>
             <img
+              className={styles.image}
               src={
                 product.image.length > 0
                   ? product.image[0].url

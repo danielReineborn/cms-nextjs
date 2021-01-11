@@ -5,7 +5,7 @@ import { shortText, dateIsoToYearMonthDate } from "../../utils/index";
 export default function ListItem({ product }) {
   console.log("listan: ", product);
   return (
-    <section className={styles.listitem}>
+    <section key={product.id} className={styles.listitem}>
       <title></title>
       <div className={styles.imgcontainer}>
         <img
